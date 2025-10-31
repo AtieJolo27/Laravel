@@ -1,0 +1,14 @@
+#MenuImg{
+    height: 50vh;
+    width: 100%;
+    object-fit: cover;
+}
+.swiper-wrapper{
+    width: 100px;
+    
+}
+.card{
+    width: 50vh;
+}
+
+

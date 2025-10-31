@@ -1,0 +1,24 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "swiper/css/bundle";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/regular.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
+
+* {
+    font-family: "Open Sans", sans-serif;
+}
+a {
+    text-decoration: none;
+}
+html, body {
+    background: #32363A;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100%;
+}

@@ -1,0 +1,13 @@
+.hero-section {
+    height: 400px;
+    width: 100%;
+    background-image: url("/storage/app/public/background/sam1.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border:none;
+    box-shadow: 0 8px 16px rgba(50, 54, 58, 1);
+    padding: 0;
+    margin: 0;
+    opacity: 75%;
+}
