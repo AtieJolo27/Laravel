@@ -31,8 +31,9 @@ Route::post('/addToCart/{id}', [CartController::class, 'addtocart'])
 
 Route::get('/carts', [CartController::class, 'showToCart'])->name('cart');
 Route::post('/carts', [CartController::class, 'showToCart']);
+Route::get('cart/total', [CartController::class, 'total']);
 
-Route::post('/removetocart/{id}', [CartController::class, 'removetocart']);
+Route::post('/removetocart/{id}', [CartController::class, 'decreaseCartQuantity']);
 Route::post('/addCartQuantity/{id}',[CartController::class, 'addCartQuantity']);
 Route::get('/layout', [CartController::class, 'show_cart']);
 

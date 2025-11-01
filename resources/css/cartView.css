@@ -1,0 +1,24 @@
+img{
+    object-fit: cover;
+    max-height: 100px;
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    height: 100px;
+}
+.incrementCartBtn{
+    border: none;
+    margin-left: 5px;
+        padding: 4px 5px 4px 5px;
+
+}
+.decrementCartBtn{
+    border: none;
+    margin-right: 5px;
+    padding: 4px 5px 4px 5px;
+    
+}
+.incrementCartBtn:hover, .decrementCartBtn:hover{
+    background-color: rgb(220, 56, 56);
+    
+}

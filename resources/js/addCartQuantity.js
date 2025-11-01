@@ -1,6 +1,7 @@
 import $ from 'jquery'
 window.$ = $
 window.jQuery = $
+import { UpdateTotal } from './cartTotal';
 
 $(document).on('click', '.incrementCartBtn', function(e){
     e.preventDefault();
@@ -18,15 +19,20 @@ $(document).on('click', '.incrementCartBtn', function(e){
         },
 
         success: function(response){
-            $('.offcanvas-body .card-body').html(response.cartHTML);   
+            $(' .cartItems').html(response.cartHTML);   
             $('.itemQuantity').css('background-color', 'red');
             setTimeout(function(){
                  $('.itemQuantity').css('background-color', ''), 2000;
             });
-
+            UpdateTotal();
+            
             
             
         }
 
     })
+
+ /*    $.ajax({
+
+    }) */
 })

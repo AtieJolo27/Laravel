@@ -47,8 +47,8 @@
                         </form>
                     </li>
                 </ul>
-                <a class="nav-link m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i
-                        class="fa fa-shopping-cart"></i> Cart {{ count($cartItems) }}</a>
+                {{-- <a class="nav-link m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i
+                        class="fa fa-shopping-cart"></i> Cart {{ count($cartItems) }}</a> --}}
                 @auth
                     <p class="mb-0">Welcome, {{ Auth::user()->name }}</p>
                 @endauth
@@ -69,37 +69,6 @@
 
     {{ $slot }}
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
-
-        <div class="offcanvas-body">
-            <div class="card w-100 h-100">
-                <div class="card-header">
-                    <h6 class="card-title d-flex justify-content-between align-items-center p-2 pb-1">
-                        Your Cart
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-
-                    </h6>
-                </div>
-                <div class="card-body h-100">
-                    @include('partials.cart-items', ['cartItems' => $cartItems])
-                </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <h6 class="mb-2">Subtotal</h6>
-                            <h6>Total</h6>
-                        </div>
-                        <div class="col-md-4 text-right">
-                            {{-- aayusin pa tong mga putanginang subtotal --}}
-                            {{-- <h6>₱ {{ number_format($subTotal, 2)}}</h6>
-                            <h6>₱ {{ $total }}</h6> --}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     @vite(['resources/js/loading.js'])
 </body>
 

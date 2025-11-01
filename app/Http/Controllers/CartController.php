@@ -41,7 +41,7 @@ class CartController extends Controller
     ]);
    }
 
-   public function removetocart($id, Request $request){
+   public function decreaseCartQuantity($id, Request $request){
     $product = Products::findOrFail($id);
     $cartItem = CartItem::where('user_id', auth()->id())
     ->where('product_id', $id)
@@ -63,6 +63,8 @@ class CartController extends Controller
         'cartHTML' => view('partials.cart-items', compact('cartItems'))->render(),
     ]);
    }
+
+   //Adding Quantity 
 public function addCartQuantity($id, Request $request){
     $product = Products::findOrFail($id);
     $cartItem = CartItem::where('user_id', auth()->id())
@@ -96,12 +98,35 @@ public function addCartQuantity($id, Request $request){
         'subTotal'=>$subTotal,
     ]);
 
-   }    
-   public function showToCart(){
-    $cartItems = CartItem::with('product')
+   }   
+    public function total(){
+         $cartItems = CartItem::with('product')
     ->where('user_id', auth()->id())
     ->get();
+    $subTotal = 0;
+    foreach($cartItems as $items){
+        $subTotal += $items->quantity * $items->product->productPrice;
+    }
+    $total = $subTotal;
+    $deliveryFee = 50;
+    return response()->json( [  
+        'totalHTML' => view('partials.subTotal', compact('subTotal', 'total', 'deliveryFee'))->render()
+    ]);
+    }
+ 
+   public function showToCart(){
+    $cartItems = CartItem::with('product')
+        ->where('user_id', auth()->id())
+        ->get();
 
-    return view('cart', compact('cartItems'));
-   }
+    $subTotal = 0;
+    foreach($cartItems as $items){
+        $subTotal += $items->quantity * $items->product->productPrice;
+    }
+    $deliveryFee = 50; // Or your fee calculation
+    $total = $subTotal + $deliveryFee;
+
+    return view('cart', compact('cartItems', 'subTotal', 'deliveryFee', 'total'));
+}
+
 }

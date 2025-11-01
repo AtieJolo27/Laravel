@@ -1,8 +1,9 @@
 import $ from 'jquery'
+import { UpdateTotal } from './cartTotal';
 window.$ = $
 window.jQuery = $
 
-$(document).on('click', '.removeFromCart', function(e){
+$(document).on('click', '.decrementCartBtn', function(e){
 e.preventDefault();
 
 var product_id =$(this).data('id');
@@ -17,7 +18,8 @@ $.ajax({
         _token: $('meta[name="csrf-token"]').attr('content')
     },
     success: function(response){
-        $(' .cartItems').html(response.cartHTML); 
+        $(' .cartItems').html(response.cartHTML);
+        UpdateTotal(); 
     }
 
 })
