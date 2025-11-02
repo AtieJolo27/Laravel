@@ -1,14 +1,15 @@
 import $ from 'jquery'
+import { UpdateTotal } from './cartTotal';
 window.$ = $
 window.jQuery = $
 
-$(document).on('click', '.removeFromCart', function(e){
+$(document).on('click', '.removeFromCartBtn', function(e){
 e.preventDefault();
 
 var product_id =$(this).data('id');
 
 $.ajax({
-    url:'removetocart/' + product_id,
+    url:'removeFromCart/' + product_id,
     method: 'POST',
     beforeSend(){
     alert("hello?" + product_id); // for debugging
@@ -18,6 +19,7 @@ $.ajax({
     },
     success: function(response){
         $(' .cartItems').html(response.cartHTML); 
+        UpdateTotal();
     }
 
 })

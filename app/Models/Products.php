@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use Carbon\Traits\Timestamp;
 use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
 {
+    public $timestamps=false;
     protected $fillable = [
         'productName',
             'productDescription',
             'productCategory',
             'productPrice',
             'productImage',
+            'productStock'
 
     ];
     

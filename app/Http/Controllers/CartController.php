@@ -48,10 +48,11 @@ class CartController extends Controller
     ->first();
     if($cartItem){
         $cartItem->decrement('quantity');
+        $cartItem->product->increment('productStock');
         $cartItem->refresh();
         if($cartItem->quantity <=0){
-        $cartItem->refresh();
-        $cartItem->delete();
+            $cartItem->refresh();
+            $cartItem->delete();
 
     }
     }
@@ -71,8 +72,9 @@ public function addCartQuantity($id, Request $request){
     ->where('product_id', $id)
     ->first();
 
-    if($cartItem){
+    if($cartItem && $product->productStock > 0){
         $cartItem->increment('quantity');
+        $cartItem->product->decrement('productStock');
         $cartItem->refresh();
     }
     $cartItems = CartItem::with('product')
@@ -82,23 +84,25 @@ public function addCartQuantity($id, Request $request){
         'cartHTML' => view('partials.cart-items', compact('cartItems'))->render(),
     ]);
 }
-   
-   public function show_cart(){
+public function removeFromCart($id, Request $request){
+    $product = Products::findOrFail($id);
+    $cartItem = CartItem::where('user_id', auth()->id())
+    ->where('product_id', $id)
+    ->first();
+
+    if($cartItem){
+        $cartItem->product->productStock += $cartItem->quantity;
+        $cartItem->product->save();
+        $cartItem->delete();
+    }
     $cartItems = CartItem::with('product')
     ->where('user_id', auth()->id())
     ->get();
-    $subTotal = 0;
-    foreach($cartItems as $items){
-        $subTotal += $items->quantity * $items->product->productPrice;
-    }
-    $total = $subTotal;
-    return view('components.layout', [
-        'cartItems'=>$cartItems,    
-        'total'=>$total,
-        'subTotal'=>$subTotal,
+    return response()->json([
+        'cartHTML' => view('partials.cart-items', compact('cartItems'))->render(),
     ]);
+}
 
-   }   
     public function total(){
          $cartItems = CartItem::with('product')
     ->where('user_id', auth()->id())
@@ -123,7 +127,7 @@ public function addCartQuantity($id, Request $request){
     foreach($cartItems as $items){
         $subTotal += $items->quantity * $items->product->productPrice;
     }
-    $deliveryFee = 50; // Or your fee calculation
+    $deliveryFee = 50; 
     $total = $subTotal + $deliveryFee;
 
     return view('cart', compact('cartItems', 'subTotal', 'deliveryFee', 'total'));

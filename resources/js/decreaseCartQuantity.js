@@ -9,11 +9,8 @@ e.preventDefault();
 var product_id =$(this).data('id');
 
 $.ajax({
-    url:'removetocart/' + product_id,
+    url:'decreaseCartQuantity/' + product_id,
     method: 'POST',
-    beforeSend(){
-    alert("hello?" + product_id); // for debugging
-},
     data: {
         _token: $('meta[name="csrf-token"]').attr('content')
     },

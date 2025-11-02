@@ -34,7 +34,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                     <li class="navbar-item"><a href="{{ route('home') }}" class="nav-link"><i
                                 class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="navbar-item"><a href="/meals" class="nav-link"><i class="fa-solid fa-bowl-food"></i>
+                    <li class="navbar-item"><a href="{{ route('meals') }}" class="nav-link"><i class="fa-solid fa-bowl-food"></i>
                             Meals</a>
                     </li>
                     <li class="navbar-item"><a href="{{ route('cart') }}" class="nav-link"><i class="fa-solid fa-coins"></i> Pricing</a>
@@ -47,8 +47,8 @@
                         </form>
                     </li>
                 </ul>
-                {{-- <a class="nav-link m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i
-                        class="fa fa-shopping-cart"></i> Cart {{ count($cartItems) }}</a> --}}
+                <a class="nav-link m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i
+                        class="fa fa-shopping-cart"></i> Cart {{ count($cartItems) }}</a>
                 @auth
                     <p class="mb-0">Welcome, {{ Auth::user()->name }}</p>
                 @endauth
@@ -69,6 +69,7 @@
 
     {{ $slot }}
 
+    
     @vite(['resources/js/loading.js'])
 </body>
 

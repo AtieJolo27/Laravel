@@ -35,7 +35,7 @@ class ProductController extends Controller
     public function show()
     {
         $products = Products::all();
-        return view('home', compact('products'));
+        return view('meals', compact('products'));
     }
 
     public function ShowClicked($id){

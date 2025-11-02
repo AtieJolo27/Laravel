@@ -14,9 +14,6 @@ $(document).on('click', '.incrementCartBtn', function(e){
         data: {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
-        beforeSend: function(){
-            alert('Success');
-        },
 
         success: function(response){
             $(' .cartItems').html(response.cartHTML);   

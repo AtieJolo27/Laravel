@@ -41,8 +41,6 @@
                     <div class="card-footer d-flex flex-column">
                         <button class="btn btn-outline-success"> Check Out</button>
                     </div>
-
-
                 </div>
 
             </div>
