@@ -7,20 +7,10 @@
         }
     </style>
     <div class="hero-section mt-0 mb-4 d-flex align-items-center justify-content-center">
-        <form action="">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search Meal" style="width: 500px">
-                <span class="input-group-text"><a href=""><i class="fa-solid fa-magnifying-glass"></i></a></span>
-            </div>
-        </form>
-    </div>
-    <div class="container">
 
-        <div class="nav" style="display: flex; justify-content: space-between;">
-            <h6>Best Seller</h6>
-            <a href="" cla>View All</a>
-        </div>
     </div>
+    
+
     <!-- Product Details Modal -->
     <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/card.css', 'resources/css/swiper.css', 'resources/css/hero.css', 'resources/css/meals.css'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/card.css', 'resources/css/swiper.css', 'resources/css/hero.css', 'resources/css/meals.css', 'resources/css/layout.css'])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -34,23 +34,43 @@
                 <ul class="navbar-nav me-auto mb-2 mb-xl-0">
                     <li class="navbar-item"><a href="{{ route('home') }}" class="nav-link"><i
                                 class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="navbar-item"><a href="{{ route('meals') }}" class="nav-link"><i class="fa-solid fa-bowl-food"></i>
+                    <li class="navbar-item"><a href="{{ route('meals') }}" class="nav-link"><i
+                                class="fa-solid fa-bowl-food"></i>
                             Meals</a>
                     </li>
-                    <li class="navbar-item"><a href="{{ route('cart') }}" class="nav-link"><i class="fa-solid fa-coins"></i> Pricing</a>
+                    <li class="navbar-item"><a href="{{ route('cart') }}" class="nav-link"><i
+                                class="fa-solid fa-coins"></i> Pricing</a>
                     </li>
                     <li class="navbar-item">
-                        <form method="POST" action="{{route('logout')}}">
-                            @csrf
-                            <button class="nav-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i>
-                                Logout</button>
-                        </form>
+
                     </li>
                 </ul>
-                <a class="nav-link m-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i
-                        class="fa fa-shopping-cart"></i> Cart {{ count($cartItems) }}</a>
                 @auth
-                    <p class="mb-0">Welcome, {{ Auth::user()->name }}</p>
+                    <div class="btn-group">
+                        <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
+                            style="border: none">
+                            <i class="fa-solid fa-user fa-sm"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <h6 class="dropdown-header">Welcome, {{ Auth::user()->name }}</h6>
+                            </li>
+                            <li class="dropdown-item">dsadas</li>
+                            <li class="dropdown-item">dsadsa</li>
+                            <li class="dropdown-item">
+                                <form method="POST" action="{{route('logout')}}">
+                                    @csrf
+                                    <button class="nav-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i>
+                                        Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+
+
                 @endauth
                 @guest
                     <a href="{{ route('Signup') }}" class="nav-link bg-dark"><i class="fa-solid fa-user"></i> Login /
@@ -69,7 +89,7 @@
 
     {{ $slot }}
 
-    
+
     @vite(['resources/js/loading.js'])
 </body>
 

@@ -19,7 +19,7 @@ Route::post('/Signup', [SignupController::class, 'signup']);
 Route::get('login', [LoginController::class, 'LoginForm'])->name('login');
 
 
-Route::get('/home', function(){
+Route::get('/', function(){
     return view('home');
 })->name('home');
 
