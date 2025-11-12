@@ -11,6 +11,7 @@
     </div>
 
 @else
+<div class="cartItems"></div>
 
     @foreach ($cartItems as $items)
 
@@ -22,24 +23,23 @@
             <div class="col">
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="fw-bold m-0"> {{ $items->product->productName }}</p>
-                    <button style="border: none" class="btn btn-danger removeFromCartBtn" data-id="{{ $items->product_id }}"> <i
+                    <button style="border: none" class="btn btn-danger removeFromCartBtn" data-id="{{ $items->id }}"> <i
                             class="fa-solid fa-trash"></i></button>
                 </div>
-
-                <p class="text-secondary m-0">{{ $items->product->productDescription }}</p>
-                <div class="" style="display: flex; justify-content: space-between;">
+                <p class="text-secondary m-0">{{ $items->selections->name }}</p>
+                <div class="" style="display: flex; justify-content: space-between; align-items:center;">
 
                     <div style="display: flex; align-items: center;">
                         <div class="d-flex justify-content-between rounded"
                             style="width: 100px; background-color: rgb(226, 223, 223);">
-                            <button class="btn decrementCartBtn" data-id="{{ $items->product_id }}"> <i
+                            <button class="btn decrementCartBtn" data-id="{{ $items->id }}"> <i
                                     class="fa-solid fa-minus"></i></button>
                             <p style="margin-bottom:0; margin-top: 3px;">{{ $items->quantity   }}</p>
-                            <button class="btn incrementCartBtn" data-id="{{ $items->product_id }}"><i class="fa-solid fa-plus"
+                            <button class="btn incrementCartBtn" data-id="{{ $items->id }}"><i class="fa-solid fa-plus"
                                     style="cursor: pointer"></i></button>
                         </div>
                     </div>
-                    <p>₱ {{ $items->product->productPrice  }}</p>
+                    <p>₱ {{ $items->selections->price_adjustment}}</p>
                 </div>
 
             </div>

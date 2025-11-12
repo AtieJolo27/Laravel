@@ -46,5 +46,6 @@ Route::post('/logout', function(){
     request()->session()->invalidate();
     request()->session()->regenerateToken();
     return redirect(route('login'));
-})->name('logout');
+})->name(
+    'logout');
 

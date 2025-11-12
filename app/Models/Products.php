@@ -17,5 +17,8 @@ class Products extends Model
             'productStock'
 
     ];
+    public function selections() {
+        return $this->hasMany(Selections::class, 'product_id');
+    }
     
 }

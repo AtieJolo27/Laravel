@@ -6,13 +6,13 @@ window.jQuery = $
 $(document).on('click', '.removeFromCartBtn', function(e){
 e.preventDefault();
 
-var product_id =$(this).data('id');
+var cart_item_id =$(this).data('id');
 
 $.ajax({
-    url:'removeFromCart/' + product_id,
+    url:'removeFromCart/' + cart_item_id,
     method: 'POST',
     beforeSend(){
-    alert("hello?" + product_id); // for debugging
+    alert("hello?" + cart_item_id); // for debugging
 },
     data: {
         _token: $('meta[name="csrf-token"]').attr('content')

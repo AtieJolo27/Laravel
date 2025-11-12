@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('selections', function (Blueprint $table) {
-    $table->id('selections_id');
+        Schema::create('cart_items', function (Blueprint $table) {
+    $table->id();
+    $table->foreignId('cart_id')->constrained('carts','cart_id')->onDelete('cascade');
     $table->foreignId('product_id')->constrained()->onDelete('cascade');
-    $table->string('name');
-    $table->decimal('price_adjustment', 8, 2)->default(0);
-    $table->integer('stock');
+    $table->foreignId('selections_id')->constrained('selections','selections_id')->onDelete('cascade');
+    $table->integer('quantity');
+    $table->decimal('price', 8, 2); // base_price + portion adjustment at insertion time
     $table->timestamps();
 });
+
     }
 
     /**
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('selections');
+        Schema::dropIfExists('cart_items');
     }
 };

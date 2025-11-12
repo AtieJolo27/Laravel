@@ -1,4 +1,4 @@
-    <div class="cartTotal">
+   <div class="cartTotal">
     <h6 class="mb-5">Order Summary</h6>
     <div class="d-flex flex-column">
         <div class="d-flex justify-content-between align-items-center mb-2">
@@ -16,6 +16,6 @@
         </div>
         
     </div>
-
+        @vite(['resources/js/cartTotal.js'])
     </div>
 

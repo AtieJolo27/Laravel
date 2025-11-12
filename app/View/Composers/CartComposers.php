@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use Illuminate\View\View;
 use App\Models\CartItem;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
 class CartComposers
@@ -13,9 +14,12 @@ class CartComposers
         $cartItems = [];
 
         if (Auth::check()) {
-            $cartItems = CartItem::with('product')
-                ->where('user_id', Auth::id())
-                ->get();
+            $cart = Cart::where('user_id', Auth::id())->first();
+            if ($cart) {
+                $cartItems = CartItem::with('product')
+                    ->where('cart_id', $cart->id)
+                    ->get();
+            }
         }
 
         $view->with('cartItems', $cartItems);

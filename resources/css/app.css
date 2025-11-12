@@ -5,6 +5,7 @@
 @import "@fortawesome/fontawesome-free/css/regular.css";
 @import "@fortawesome/fontawesome-free/css/solid.css";
 @import "@fortawesome/fontawesome-free/css/brands.css";
+@import "lineicons/dist/lineicons.css";
 
 * {
     font-family: "Open Sans", sans-serif;

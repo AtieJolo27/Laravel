@@ -32,10 +32,10 @@
                 <div class="card w-100">
                     <div class="card-body">
                         @include('partials.subTotal', [
-    'subTotal' => $subTotal,
-    'deliveryFee' => $deliveryFee,
-    'total' => $total
-])
+                            'subTotal' => $subTotal,
+                            'deliveryFee' => $deliveryFee,
+                            'total' => $total
+                        ])
 
                     </div>
                     <div class="card-footer d-flex flex-column">

@@ -34,19 +34,21 @@ class ProductController extends Controller
      */
     public function show()
     {
-        $products = Products::all();
+        $products = Products::with('selections')->get();
+
         return view('meals', compact('products'));
     }
 
     public function ShowClicked($id){
 
-        $product = Products::findOrFail($id);
+        $product = Products::with('selections')->findOrFail($id);
 
         return response()->json([
             'productName' => $product->productName,
             'productDescription' => $product->productDescription,
             'productPrice' => $product->productPrice,
-            'productImage' => asset('storage/' . $product->productImage)
+            'productImage' => asset('storage/' . $product->productImage),
+            'selections' =>$product->selections,
         ]);
 
     }

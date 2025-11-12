@@ -1,11 +1,19 @@
-import $, { error } from "jquery";
+/* import $, { error } from "jquery";
 import Swal from "sweetalert2";
 
 window.$ = $;
 window.jQuery = $;
-$(document).on("submit", ".AddToCart", function (e) {
+$(document).on("submit", ".addToCart", function (e) {
     e.preventDefault();
-    var url = $(this).attr("action");
+    var product_id = $(this).attr("data-id");
+    var selections_id = $('input[name="selections_id"]:checked').val();
+    console.log("AddToCart btn data-id:", product_id);
+
+
+    if (!selections_id) {
+        alert("Please select an option!");
+        return; // HUWAG MAG-PROCEED kung walang napili!
+    }
     const Toast = Swal.mixin({
         toast: true,
         position: "bottom-end",
@@ -20,7 +28,11 @@ $(document).on("submit", ".AddToCart", function (e) {
     $.ajax({
         method: "POST",
         url: url,
-        data: $(this).serialize(),
+        data: {
+            _token: csrf,
+            product_id: product_id,
+            selections_id: selections_id
+        },
 
         beforeSend: function(){
             Toast.fire({
@@ -49,15 +61,16 @@ $(document).on("submit", ".AddToCart", function (e) {
                 icon: "success",
                 title: "Added to cart",
             });
+
             /* Swal.fire({
                 position: "bottom-end",
                 icon: "success",
                 title: "Added to cart!",
                 text: response.success || "Successfully added",
                
-            }) */
-            $("#cart-count").text(response.cartCount);
-            $(".offcanvas-body .card-body").html(response.cartHTML);
+            }) 
+            $(".cartItems").html(response.cartHTML);
         },
     });
 });
+ */

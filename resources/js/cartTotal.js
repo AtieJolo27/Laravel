@@ -11,3 +11,6 @@ export function UpdateTotal(){
         }
     })
 }
+$(document).ready(function(){
+    UpdateTotal();
+});

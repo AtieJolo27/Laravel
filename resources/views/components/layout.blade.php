@@ -18,65 +18,112 @@
 </head>
 
 <body>
+    
 
 
 
-    <div class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="d-none d-lg-block navbar navbar-expand navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
-                <img src="/storage/products/Logo.jpg" style="border: 1px; border-radius: 5px;" width="120px"
+                <img src="/storage/products/Logo.png" style="border: 1px; border-radius: 5px;" width="120px"
                     class="img-fluid" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavigationBar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse show" id="NavigationBar">
-                <ul class="navbar-nav me-auto mb-2 mb-xl-0">
-                    <li class="navbar-item"><a href="{{ route('home') }}" class="nav-link"><i
-                                class="fa-solid fa-house"></i> Home</a></li>
-                    <li class="navbar-item"><a href="{{ route('meals') }}" class="nav-link"><i
-                                class="fa-solid fa-bowl-food"></i>
-                            Meals</a>
-                    </li>
-                    <li class="navbar-item"><a href="{{ route('cart') }}" class="nav-link"><i
-                                class="fa-solid fa-coins"></i> Pricing</a>
-                    </li>
-                    <li class="navbar-item">
 
-                    </li>
-                </ul>
-                @auth
-                    <div class="btn-group">
-                        <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
-                            style="border: none">
-                            <i class="fa-solid fa-user fa-sm"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <h6 class="dropdown-header">Welcome, {{ Auth::user()->name }}</h6>
-                            </li>
-                            <li class="dropdown-item">dsadas</li>
-                            <li class="dropdown-item">dsadsa</li>
-                            <li class="dropdown-item">
-                                <form method="POST" action="{{route('logout')}}">
-                                    @csrf
-                                    <button class="nav-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i>
-                                        Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
+            <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+                <li class="navbar-item"><a href="{{ route('home') }}" class="nav-link"><i class="fa-solid fa-house"></i>
+                        Home</a></li>
+                <li class="navbar-item"><a href="{{ route('meals') }}" class="nav-link"><i
+                            class="fa-solid fa-bowl-food"></i>
+                        Meals</a>
+                </li>
+                <li class="navbar-item"><a href="{{ route('cart') }}" class="nav-link"><i class="fa-solid fa-shopping-cart"></i>
+                        Cart</a>
+                </li>
+                <li class="navbar-item">
 
-
-
-
-
-                @endauth
-                @guest
-                    <a href="{{ route('Signup') }}" class="nav-link bg-dark"><i class="fa-solid fa-user"></i> Login /
-                        Signup</a>
-
-                @endguest
+                </li>
+            </ul>
+            @auth
+                <div class="btn-group">
+                    <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
+                        style="border: none">
+                        <i class="fa-solid fa-user fa-sm"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <h6 class="dropdown-header">Welcome, {{ Auth::user()->name }}</h6>
+                        </li>
+                        <li class="dropdown-item">dsadas</li>
+                        <li class="dropdown-item">dsadsa</li>
+                        <li class="dropdown-item">
+                            <form method="POST" action="{{route('logout')}}">
+                                @csrf
+                                <button class="nav-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @endauth
+            @guest
+                <a href="{{ route('Signup') }}" class="nav-link bg-dark"><i class="fa-solid fa-user"></i> Login /
+                    Signup</a>
+            @endguest
+        </div>
+    </div>
+    
+    <div class="d-lg-none navbar navbar-expand navbar-dark bg-dark sticky-top">
+        <div class="container-fluid d-block">
+            <div class="row">
+            <a href="#" class="navbar-brand">
+                 <img src="/storage/products/Logo.png" style="border: 1px; border-radius: 5px;" width="100px"
+                    class="img-fluid" alt="">
+            </a>
+            </div>
+            <div class="row">
+            <ul class="navbar-nav me-auto d-flex justify-content-between">
+                <li class="navbar-item">
+                    <a href="{{ route('home') }}" class="nav-link"><i class="fa-solid fa-house fa-xl"></i></a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{{ route('meals') }}" class="nav-link"><i class="fa-solid fa-bowl-food fa-xl"></i></a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{{ route('cart') }}" class="nav-link"><i class="fa-solid fa-shopping-cart fa-xl"></i></a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{{ route('cart') }}" class="nav-link"><i class="fa-solid fa-shopping-cart fa-xl"></i></a>
+                </li>
+                
+                <div class="text-end">
+                    @auth
+                <div class="btn-group text-end ">
+                    <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
+                        style="border: none">
+                        <i class="fa-solid fa-user fa-sm"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <h6 class="dropdown-header">Welcome, {{ Auth::user()->name }}</h6>
+                        </li>
+                        <li class="dropdown-item">dsadas</li>
+                        <li class="dropdown-item">dsadsa</li>
+                        <li class="dropdown-item">
+                            <form method="POST" action="{{route('logout')}}">
+                                @csrf
+                                <button class="nav-link" type="submit"><i class="fa-solid fa-right-from-bracket"></i>
+                                    Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            @endauth
+            @guest
+                <a href="{{ route('Signup') }}" class="nav-link"><i class="fa-solid fa-user"></i> Login /
+                    Signup</a>
+            @endguest
+                </div>
+            </ul>
             </div>
         </div>
     </div>
