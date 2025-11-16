@@ -16,12 +16,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
-
 <body>
-    
-
-
-
     <div class="d-none d-lg-block navbar navbar-expand navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a href="#" class="navbar-brand">
@@ -45,9 +40,9 @@
             </ul>
             @auth
                 <div class="btn-group">
-                    <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
-                        style="border: none">
-                        <i class="fa-solid fa-user fa-sm"></i>
+                    <button class="btn btn-outline-secondary" data-bs-toggle="dropdown"
+                        style="border: none; width: auto; height: auto;">
+                        <i class="fa-solid fa-user fa-sm" style="font-size: 12px; margin: 0;"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
@@ -97,10 +92,10 @@
                 
                 <div class="text-end">
                     @auth
-                <div class="btn-group text-end ">
-                    <button class="btn btn-success rounded-circle dropdown-toggle" data-bs-toggle="dropdown"
+                <div class="btn-group text-end ml-2">
+                    <button class="btn btn-outline-secondary" data-bs-toggle="dropdown"
                         style="border: none">
-                        <i class="fa-solid fa-user fa-sm"></i>
+                        <i class="fa-solid fa-user fa-lg    " style="font-size: ; margin: 0;"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>

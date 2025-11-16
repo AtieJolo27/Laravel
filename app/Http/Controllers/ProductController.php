@@ -39,19 +39,27 @@ class ProductController extends Controller
         return view('meals', compact('products'));
     }
 
-    public function ShowClicked($id){
+public function ShowClicked($id) {
+    $product = Products::with('selections')->findOrFail($id);
 
-        $product = Products::with('selections')->findOrFail($id);
+    // I-map ang selections para maging 'id' ang key (para consistent sa JS)
+    $selections = $product->selections->map(function ($selection) {
+        return [
+            'id' => $selection->selections_id,  // Map selections_id to id
+            'name' => $selection->name,
+            'price_adjustment' => $selection->price_adjustment,
+        ];
+    });
 
-        return response()->json([
-            'productName' => $product->productName,
-            'productDescription' => $product->productDescription,
-            'productPrice' => $product->productPrice,
-            'productImage' => asset('storage/' . $product->productImage),
-            'selections' =>$product->selections,
-        ]);
+    return response()->json([
+        'productName' => $product->productName,
+        'productDescription' => $product->productDescription,
+        'productPrice' => $product->productPrice,
+        'productImage' => asset('storage/' . $product->productImage),
+        'selections' => $selections,
+    ]);
+}
 
-    }
 
     /**
      * Update the specified resource in storage.

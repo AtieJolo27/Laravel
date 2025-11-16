@@ -38,13 +38,22 @@ $(document).on("click", ".ItemDetails", function () {
                             value="${selection.id}"
                             data-price="${selection.price_adjustment}"
                             ${index === 0 ? "checked" : ""}>
-                        <label class="form-check-label" for="radio_${selection.id}">
+                        <label class="form-check-label" for="radio_${
+                            selection.id
+                        }">
                             ${selection.name}
                         </label>
                     </div>
                 `;
                 $container.append(radioHtml);
             });
+            let $defaultRadio = $(
+                "#modalSelectionsContainer input[name='selections_id']:checked"
+            );
+            if ($defaultRadio.length > 0) {
+                $("#productPrice").text($defaultRadio.data("price"));
+            }
+
             $(document)
                 .off("change", "input[name='selections_id']")
                 .on("change", "input[name='selections_id']", function () {
@@ -60,6 +69,12 @@ $(document).on("click", ".ItemDetails", function () {
 
             // Optional: update Add to Cart button
             $("#addToCartButton").attr("data-id", productId);
+            console.log("All radios:", $('input[name="selections_id"]')); // Tingnan kung may radios
+            console.log(
+                "Checked radio:",
+                $('input[name="selections_id"]:checked')
+            ); // Tingnan kung may checked
+            console.log("Selections ID value:", selections_id); // Dapat number, e.g., "1"
         },
 
         error: function (xhr) {
@@ -80,7 +95,11 @@ $(document).on("click", "#addToCartButton", function (e) {
     var product_id = $("#modalProductId").val();
     var selections_id = $('input[name="selections_id"]:checked').val();
     var url = "/addToCart/" + product_id;
-    console.log("AddToCart btn data-id:", product_id);
+    console.log("AddToCart btn data-id:", selections_id);
+    console.log(
+        "Checked selection ID:",
+        $('input[name="selections_id"]:checked').val()
+    );
 
     if (!selections_id) {
         alert("Please select an option!");

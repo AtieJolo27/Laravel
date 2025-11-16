@@ -24,9 +24,9 @@ Route::get('/', function(){
 })->name('home');
 
 //Cart Route
-Route::post('/addToCart/{id}', [CartController::class, 'addtocart'])
-->middleware('auth')
-->name('addCart');
+Route::post('/addToCart/{id}', [CartController::class, 'addtocart']);
+/* ->middleware('auth')
+->name('addCart'); */
 
 
 Route::get('/carts', [CartController::class, 'showToCart'])->name('cart');

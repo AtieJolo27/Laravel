@@ -1,0 +1,24 @@
+.PasswordField {
+  background: url('/storage/app/public/background/eye-solid-full.svg') no-repeat right 10px center;
+  background-size: 20px 20px;
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.card {
+    border: 0;
+    box-shadow: 1px 10px 10px 1px rgb(195, 194, 194);
+}
+

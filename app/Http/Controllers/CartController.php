@@ -17,6 +17,8 @@ class CartController extends Controller
     }
 public function addtocart($id, Request $request)
 {
+        \Log::info('addtocart called', ['id' => $id, 'selections_id' => $request->selections_id]);
+
     $product = Products::findOrFail($id);
     $selections_id = $request->selections_id;
 

@@ -1,11 +1,10 @@
 <x-layout>
-    {{-- Import your CSS --}}
     @vite(['resources/css/meals.css'])
 
     <div class="container py-3">
-        <div class="row g-4 justify-content-center  "> <!-- Add g-4 for card spacing -->
+        <div class="row g-4 justify-content-center  ">
             @foreach ($products as $product)
-                <div class="col-auto"> <!-- Use col-sm-12 for mobile responsiveness -->
+                <div class="col-auto"> 
                     <div class="card h-100 ProductCards">
                         <img class="img-fluid card-img-top ItemDetails"
                             src="{{ asset('storage/' . $product->productImage) }}" alt="{{ $product->productName }}"
@@ -60,7 +59,6 @@
                                         <p id="productDescription"></p>
                                         <input type="hidden" id="modalProductId" name="product_id" value="">
                                         <div id="modalSelectionsContainer"></div>
-
                                     </div>
                                 </div>
                             </div>
@@ -68,15 +66,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-
-                    {{-- <form action="{{ route('addCart', ['id' => $product->id]) }}" class="d-inline AddToCart"
-                        method="POST">
-                        @csrf --}}
-
                         <button id="addToCartButton" class="btn btn-sm btn-primary ms-1">Add to Cart</button>
-                        {{--
-                    </form> --}}
-
                 </div>
             </div>
         </div>
